@@ -1,0 +1,18 @@
+<section class="container">
+  <h1>TP — Book Catalog</h1>
+
+  <app-book-form
+    [categories]="categories"
+    [book]="bookToEdit"
+    (createBook)="onCreateBook($event)"
+    (updateBook)="onUpdateBook($event)"
+    (cancelEdit)="onCancelEdit()"
+  ></app-book-form>
+
+<br>
+  <app-book-list
+    [books]="books"
+    (editBook)="onEditRequest($event)"
+    (deleteBook)="onDeleteBook($event)"
+  ></app-book-list>
+</section>

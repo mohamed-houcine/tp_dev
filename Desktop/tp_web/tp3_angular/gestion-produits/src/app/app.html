@@ -1,0 +1,11 @@
+<app-bienvenue></app-bienvenue>
+
+<app-produit
+  [nomProduit]="'Ordinateur Portable'"
+  [prix]="1299.99"
+  (ajouterAuPanier)="gererAjoutAuPanier($event)">
+</app-produit>
+
+<app-utilisateur></app-utilisateur>
+
+<app-panier [items]="panierItems"></app-panier>

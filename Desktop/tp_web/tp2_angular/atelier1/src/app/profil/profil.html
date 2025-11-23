@@ -1,0 +1,15 @@
+<form>
+  <label>Prénom:
+    <input #prenom="" [(ngModel)]="utilisateur.prenom" name="prenom" placeholder="Prénom">
+  </label>
+  <br>
+  <label>Âge:
+    <input [(ngModel)]="utilisateur.age" name="age" type="number" placeholder="Âge">
+  </label>
+</form>
+
+<p>Valeurs en temps réel :</p>
+<ul>
+  <li>Prénom : {{ utilisateur.prenom }}</li>
+  <li>Âge : {{ utilisateur.age }}</li>
+</ul>

@@ -1,0 +1,10 @@
+<h2>Produits</h2>
+
+<div *ngFor="let p of produits">
+  <span>{{ p.nom }} - </span>
+  <span [ngStyle]="{ 'color': getStockColor(p.stock) }">
+    Stock : {{ p.stock }}
+  </span>
+  <button (click)="changerStock(p, 5)">+5</button>
+  <button (click)="changerStock(p, -5)">-5</button>
+</div>

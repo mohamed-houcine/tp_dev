@@ -1,0 +1,36 @@
+<div class="list-controls">
+  <input placeholder="Recherche par titre ou auteur..." [(ngModel)]="searchTerm">
+  <label>Tri:
+    <select [(ngModel)]="sortBy">
+      <option value="none">Aucun</option>
+      <option value="category">Par catégorie</option>
+      <option value="availability">Par disponibilité</option>
+    </select>
+  </label>
+</div>
+
+<table class="books-table">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Auteur</th>
+      <th>Catégorie</th>
+      <th>Disponible</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of filtered; trackBy: trackById">
+      <td>{{ book.title }}</td>
+      <td>{{ book.author }}</td>
+      <td>{{ book.category }}</td>
+      <td>{{ book.isAvailable ? 'Oui' : 'Non' }}</td>
+      <td class="actions">
+        <button (click)="editBook.emit(book)">Edit</button>
+        <button (click)="deleteBook.emit(book.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<p class="counter">Total livres : {{ books.length }}</p>

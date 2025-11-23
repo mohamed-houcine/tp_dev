@@ -1,0 +1,19 @@
+.card {
+  padding: 12px;
+  border-radius: 8px;
+  margin: 8px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+.product-image {
+  max-width: 200px;
+  display:block;
+  margin-bottom:8px;
+}
+.en-stock {
+  border: 2px solid green;
+  background-color: #e8ffe8;
+}
+.hors-stock {
+  border: 2px solid red;
+  background-color: #ffe8e8;
+}

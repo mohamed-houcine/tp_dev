@@ -1,0 +1,18 @@
+<div class="card">
+  <h3>Q{{ index + 1 }} — {{ q.question }}</h3>
+
+  <div *ngIf="q.options">
+    <button *ngFor="let opt of q.options"
+      (click)="selectOption(opt)"
+      [disabled]="answeredLocal">
+      {{ opt }}
+    </button>
+  </div>
+
+  <div *ngIf="!q.options">
+    <input [(ngModel)]="textAnswer" placeholder="Votre réponse...">
+    <button (click)="submitText()" [disabled]="answeredLocal">Valider</button>
+  </div>
+
+  <p *ngIf="timeLeft !== null">Temps restant : {{ timeLeft }}s</p>
+</div>

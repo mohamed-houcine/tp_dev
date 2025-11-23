@@ -1,0 +1,19 @@
+<div class="card">
+  <div *ngIf="index === questions.length - 1 && timeLeft === null">
+    <h2>Quiz terminé 🎉</h2>
+  </div>
+  <app-score 
+    [score]="score" 
+    [bonnes]="bonnes" 
+    [mauvaises]="mauvaises">
+  </app-score>
+<div *ngIf="timeLeft != null">
+  <app-question
+    [q]="currentQ"
+    [index]="index"
+    [timeLeft]="timeLeft"
+    (answered)="onAnswered($event)">
+  </app-question>
+</div>
+  
+</div>

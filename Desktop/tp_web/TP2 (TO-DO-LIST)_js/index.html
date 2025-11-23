@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>TO-DO-LIST</h1>
+
+  <div id="input_area">
+    <input type="text" id="zone_saisie" placeholder="Entrer la tâche" />
+    <button id="Ajouter" type="button">Ajouter</button>
+    <p id="error_msg" ></p>
+  </div>
+
+  <div id="taches_container">
+    <h2>Liste des tâches :</h2>
+    <label for="search" class="sr-only">Rechercher</label>
+    <input type="search" id="search" placeholder="Rechercher..." />
+    <ul id="list"></ul>
+
+    <p id="nbCounter"></p>
+    <button id="SupprimerTout" type="button">Tout supprimer</button>
+  </div>
+
+  <p id="pas">Pas de tâches !</p>
+
+  <script src="script.js"></script>
+</body>
+</html>

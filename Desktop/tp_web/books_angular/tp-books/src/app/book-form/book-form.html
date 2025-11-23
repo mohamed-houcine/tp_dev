@@ -1,0 +1,82 @@
+<form #bookForm="ngForm" (ngSubmit)="onSubmit(bookForm)" novalidate class="book-form">
+
+  <div class="row">
+    <label for="title">Titre</label>
+    <input id="title" name="title" [(ngModel)]="model.title"
+           #title="ngModel"
+           required minlength="3"
+           pattern="^(?!\\d+$).+">
+    <div class="error" *ngIf="title.invalid && title.dirty">
+      <div *ngIf="title.errors?.['required']">Titre requis</div>
+      <div *ngIf="title.errors?.['minlength']">Min 3 caractères</div>
+      <div *ngIf="title.errors?.['pattern']">Le titre ne peut pas être uniquement des chiffres</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label for="author">Auteur</label>
+    <input id="author" name="author" [(ngModel)]="model.author" #author="ngModel" required minlength="3">
+    <div class="error" *ngIf="author.invalid && author.dirty">
+      <div *ngIf="author.errors?.['required']">Auteur requis</div>
+      <div *ngIf="author.errors?.['minlength']">Min 3 caractères</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label for="publisherEmail">Email Editeur</label>
+    <input id="publisherEmail" name="publisherEmail" [(ngModel)]="model.publisherEmail" #publisherEmail="ngModel" required email>
+    <div class="error" *ngIf="publisherEmail.invalid && publisherEmail.dirty">
+      <div *ngIf="publisherEmail.errors?.['required']">Email requis</div>
+      <div *ngIf="publisherEmail.errors?.['email']">Format email invalide</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label for="publisherPhone">Téléphone Editeur (Tunisie)</label>
+    <input id="publisherPhone" name="publisherPhone" [(ngModel)]="model.publisherPhone" #publisherPhone="ngModel"
+           pattern="^[0-9]{8}$">
+    <div class="error" *ngIf="publisherPhone.invalid && publisherPhone.dirty">
+      <div *ngIf="publisherPhone.errors?.['pattern']">Doit être exactement 8 chiffres</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label for="releaseDate">Date de publication</label>
+    <input id="releaseDate" name="releaseDate" type="date" [(ngModel)]="model.releaseDate" #releaseDate="ngModel" required>
+    <div class="error" *ngIf="(releaseDate.invalid && releaseDate.dirty) || releaseDateError">
+      <div *ngIf="releaseDate.errors?.['required']">Date requise</div>
+      <div *ngIf="releaseDateError">{{ releaseDateError }}</div>
+    </div>
+  </div>
+
+  <div class="row">
+    <label for="category">Catégorie</label>
+    <select id="category" name="category" [(ngModel)]="model.category" #category="ngModel" required>
+      <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+    </select>
+    <div class="error" *ngIf="category.invalid && category.dirty">
+      <div *ngIf="category.errors?.['required']">Catégorie requise</div>
+    </div>
+  </div>
+
+  <div class="row checkbox-row">
+    <label>
+      <input type="checkbox" name="isAvailable" [(ngModel)]="model.isAvailable"> Disponible
+    </label>
+  </div>
+
+  <div class="row">
+    <label for="stock">Stock (facultatif)</label>
+    <input id="stock" name="stock" type="number" min="0" [(ngModel)]="model.stock" #stock="ngModel">
+    <div class="error" *ngIf="stock.invalid && stock.dirty">
+      <div *ngIf="stock.errors?.['min']">Stock doit être >= 0</div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button type="submit" [disabled]="bookForm.invalid">
+      {{ model.id && model.id > 0 ? 'Mettre à jour' : 'Ajouter' }}
+    </button>
+    <button type="button" (click)="onCancel()" *ngIf="model.id && model.id>0">Annuler</button>
+  </div>
+</form>

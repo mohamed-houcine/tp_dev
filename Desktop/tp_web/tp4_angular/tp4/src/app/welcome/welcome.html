@@ -1,0 +1,21 @@
+<h2>Bienvenue</h2>
+
+<div class="card">
+  <input
+    type="text"
+    
+    name="prenom"
+    [(ngModel)]="prenom"
+
+    placeholder="Entrez votre prénom"
+    
+  />
+
+  <button (click)="toggleLogin()">
+    {{ isLoggedIn ? 'Se déconnecter' : 'Se connecter' }}
+  </button>
+
+  <p *ngIf="isLoggedIn">
+    Bienvenue, utilisateur !
+  </p>
+</div>

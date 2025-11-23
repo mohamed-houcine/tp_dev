@@ -1,0 +1,18 @@
+<h2>Gestion des tâches</h2>
+
+<ng-container *ngIf="taches.length > 0; else pasDeTaches">
+  <ul>
+    <li *ngFor="let t of taches"
+        [ngClass]="{ 'done': t.statuts }"
+        [ngStyle]="{ 'color': getColor(t.priorite) }">
+      {{ t.description }} ({{ t.priorite }})
+      <button (click)="toggleStatut(t)">
+        {{ t.statuts ? 'Marquer non complétée' : 'Marquer complétée' }}
+      </button>
+    </li>
+  </ul>
+</ng-container>
+
+<ng-template #pasDeTaches>
+  <p>Vous n'avez pas de tâches en cours</p>
+</ng-template>
